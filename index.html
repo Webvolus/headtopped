@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Title Screen</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+    <audio id="title-music" loop>
+        <source src="VGM2.mp3" type="audio/mp3">
+    </audio>
+    
+    <div class="canvas-container">
+        <h1 class="title">Headtopped</h1>
+        <canvas id="title-canvas"></canvas>
+        <button id="start-button-2" class="button">Start Game</button>
+    </div>
+
+    <script>
+        document.getElementById('start-button-2').addEventListener('click', function() {
+            window.location.href = 'gameplay.html';
+        });
+
+        const titleCanvas = document.getElementById('title-canvas');
+        const ctx = titleCanvas.getContext('2d');
+        titleCanvas.width = 800;
+        titleCanvas.height = 450;
+
+        const background = new Image();
+        background.src = 'background-image.jpg';
+        background.onload = function() {
+            ctx.drawImage(background, 0, 0, titleCanvas.width, titleCanvas.height);
+        };
+
+        const audio = document.getElementById("title-music");
+        document.addEventListener("click", () => {
+            audio.play();
+        }, { once: true });
+    </script>
+</body>
+</html>
